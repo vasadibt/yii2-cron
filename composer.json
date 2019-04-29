@@ -1,0 +1,30 @@
+{
+  "name": "vasadibt/yii2-cron",
+  "description": "Create Cron jobs from browser, and look that run logs",
+  "type": "yii2-extension",
+  "keywords": [
+    "yii2",
+    "extension",
+    "cron",
+    "schedule",
+    "module"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "vasadibt",
+      "email": "vasadibt@gmail.com"
+    }
+  ],
+  "require": {
+    "yiisoft/yii2": "~2.0.0",
+    "symfony/process": "^4.2",
+    "mtdowling/cron-expression": "^1.2",
+    "kartik-v/yii2-grid": "@dev"
+  },
+  "autoload": {
+    "psr-4": {
+      "vasadibt\\cron\\": ""
+    }
+  }
+}
