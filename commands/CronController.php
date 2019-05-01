@@ -8,13 +8,11 @@
 
 namespace vasadibt\cron\commands;
 
-use common\helpers\ArrayHelper;
-use console\components\Console;
 use Cron\CronExpression;
-use Symfony\Component\Process\Process;
 use vasadibt\cron\models\CronJob;
 use yii\console\Controller;
 use yii\console\widgets\Table;
+use yii\helpers\ArrayHelper;
 
 /**
  * Class JobController

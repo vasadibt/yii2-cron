@@ -1,10 +1,10 @@
 <?php
 
-use console\components\Console;
-use vasadibt\cron\models\CronJobRun;
 use kartik\grid\GridView;
-use common\helpers\Html;
+use vasadibt\cron\models\CronJobRun;
 use vasadibt\cron\Module;
+use yii\helpers\Console;
+use yii\helpers\Html;
 
 /** @var yii\web\View $this */
 /** @var vasadibt\cron\models\CronJobRunSearch $searchModel */

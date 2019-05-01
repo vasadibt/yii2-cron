@@ -4,7 +4,7 @@ use vasadibt\cron\models\CronJob;
 use vasadibt\cron\Module;
 use kartik\grid\GridView;
 use rmrevin\yii\fontawesome\FAS;
-use common\helpers\Html;
+use yii\helpers\Html;
 
 /** @var yii\web\View $this */
 /** @var vasadibt\cron\models\CronJobSearch $searchModel */
@@ -22,7 +22,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'pjax' => true,
             'bsVersion' => Module::getInstance()->bsVersion,
             'columns' => [
-                ['class' => 'vasadibt\grid\SerialColumn'],
+                ['class' => 'kartik\grid\SerialColumn'],
                 [
                     'class' => '\kartik\grid\DataColumn',
                     'attribute' => 'name',

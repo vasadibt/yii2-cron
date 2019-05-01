@@ -3,9 +3,7 @@
 
 namespace vasadibt\cron\commands;
 
-use Symfony\Component\Process\Process;
 use vasadibt\cron\models\CronJob;
-use vasadibt\cron\models\CronJobRun;
 use yii\console\Controller;
 use yii\helpers\Console;
 
