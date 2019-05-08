@@ -86,7 +86,7 @@ On Linux:
 Add to the crontab with the user who you want to run the script (possibly not root) with the `crontab -e` command or by editing the `/etc/crontab` file
 
 ```bash
-* * * * <your-application's-folder>/yii cron/cron/run 2>&1
+* * * * * <your-application-folder>/yii cron/cron/run 2>&1
 ```
 
 On Windows:

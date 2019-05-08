@@ -3,7 +3,6 @@
 use vasadibt\cron\models\CronJob;
 use vasadibt\cron\Module;
 use kartik\grid\GridView;
-use rmrevin\yii\fontawesome\FAS;
 use yii\helpers\Html;
 
 /** @var yii\web\View $this */
@@ -68,7 +67,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     'template' => '{update} {delete} {run}',
                     'buttons' => [
                         'run' => function ($url, CronJob $model) {
-                            return Html::a(FAS::i(FAS::_LIST), ['/cron/cron-job-run/index', 'CronJobRunSearch' => ['job_id' => $model->id]], [
+                            return Html::a('<i class="glyphicon glyphicon-list"></i>', ['/cron/cron-job-run/index', 'CronJobRunSearch' => ['job_id' => $model->id]], [
                                 'title' => Yii::t('vbt-cron', 'Logs'),
                                 'data-pjax' => 0,
                             ]);
