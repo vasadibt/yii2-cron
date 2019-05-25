@@ -42,5 +42,5 @@ return [
     'The requested page does not exist.' => 'The requested page does not exist.',
     'Update' => 'Update',
     'Update Cron Job: {nameAttribute}' => 'Update cron job: {nameAttribute}',
-    'Are you sure to delete this item?' => '@@Are you sure to delete this item?@@',
+    'Max execution time' => 'Max execution time',
 ];

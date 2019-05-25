@@ -36,6 +36,10 @@ $this->params['breadcrumbs'][] = $this->title;
                 ],
                 [
                     'class' => '\kartik\grid\DataColumn',
+                    'attribute' => 'max_execution_time',
+                ],
+                [
+                    'class' => '\kartik\grid\DataColumn',
                     'attribute' => 'active',
                     'format' => 'bool',
                 ],

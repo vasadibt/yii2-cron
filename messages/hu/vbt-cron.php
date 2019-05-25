@@ -42,5 +42,5 @@ return [
     'The requested page does not exist.' => 'A keresett oldal nem létezik',
     'Update' => 'Módosítás',
     'Update Cron Job: {nameAttribute}' => 'Cron feledat módosítása: {nameAttribute}',
-    'Are you sure to delete this item?' => '@@Biztos törlöd ezt a tételt?@@',
+    'Max execution time' => 'Maximum futási idó',
 ];

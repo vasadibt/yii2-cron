@@ -16,7 +16,7 @@ class CronJobSearch extends CronJob
     public function rules()
     {
         return [
-            [['id', 'last_id', 'active'], 'integer'],
+            [['id', 'last_id', 'max_execution_time', 'active'], 'integer'],
             [['name', 'schedule', 'command'], 'safe'],
         ];
     }
@@ -60,6 +60,7 @@ class CronJobSearch extends CronJob
             ['like', 'name', $this->name],
             ['like', 'schedule', $this->schedule],
             ['like', 'command', $this->command],
+            ['max_execution_time' => $this->max_execution_time],
             ['like', 'active', $this->active],
         ]);
 

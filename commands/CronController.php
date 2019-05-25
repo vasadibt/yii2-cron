@@ -26,6 +26,7 @@ class CronController extends Controller
     public $defaultAction = 'jobs';
 
     /**
+     * List all jobs
      * @throws \Exception
      */
     public function actionJobs()
@@ -36,13 +37,14 @@ class CronController extends Controller
 
         echo PHP_EOL;
         echo Table::widget([
-            'headers' => ['ID', 'Name', 'Schedule', 'Command', 'Active'],
+            'headers' => ['ID', 'Name', 'Schedule', 'Command', 'Max execution time', 'Active'],
             'rows' => ArrayHelper::getColumn($jobs, function (CronJob $job) {
                 return [
                     $job->id,
                     $job->name,
                     $job->schedule,
                     $job->command,
+                    $job->max_execution_time,
                     $job->active ? 1 : 0,
                 ];
             })
@@ -50,7 +52,7 @@ class CronController extends Controller
     }
 
     /**
-     * un cron jobs
+     * Run cron jobs
      */
     public function actionRun()
     {

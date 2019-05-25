@@ -13,12 +13,14 @@ use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "cron_job".
- * @property integer $id
- * @property integer $last_id
+ *
+ * @property int $id
+ * @property int $last_id
  * @property string $name
  * @property string $schedule
  * @property string $command
- * @property integer $active
+ * @property int $max_execution_time
+ * @property int $active
  *
  * @property CronJobRun[] $cronJobRuns
  * @property CronJobRun $last
@@ -39,7 +41,7 @@ class CronJob extends ActiveRecord
     public function rules()
     {
         return [
-            [['last_id', 'active'], 'integer'],
+            [['last_id', 'max_execution_time', 'active'], 'integer'],
             [['name', 'schedule', 'command'], 'string', 'max' => 255],
         ];
     }
@@ -55,6 +57,7 @@ class CronJob extends ActiveRecord
             'name' => Yii::t('vbt-cron', 'Name'),
             'schedule' => Yii::t('vbt-cron', 'Schedule'),
             'command' => Yii::t('vbt-cron', 'Command'),
+            'max_execution_time' => Yii::t('vbt-cron', 'Max execution time'),
             'active' => Yii::t('vbt-cron', 'Active'),
         ];
     }
@@ -102,27 +105,13 @@ class CronJob extends ActiveRecord
     }
 
     /**
-     * Build cron job command
-     *
-     * @return string
-     */
-    public function buildCommand()
-    {
-        return strtr('{php} {yii} {command}', [
-            '{php}' => PHP_BINARY,
-            '{yii}' => \Yii::getAlias('@root/yii'),
-            '{command}' => $this->command,
-        ]);
-    }
-
-    /**
      * Run cron job
      *
      * @return CronJobRun
      */
     public function run()
     {
-        $process = new Process($this->buildCommand());
+        $process = $this->getProcess();
         $process->start();
         $start = microtime(true);
 
@@ -151,13 +140,33 @@ class CronJob extends ActiveRecord
      */
     public function runQuick()
     {
-        $command = strtr('{php} {yii} {command}', [
+        $process = $this->getProcess();
+        $process->start();
+    }
+
+    /**
+     * Get process object
+     *
+     * @return Process
+     */
+    public function getProcess()
+    {
+        return !empty($this->max_execution_time)
+            ? new Process($this->buildCommand(), null, null, null, $this->max_execution_time)
+            : new Process($this->buildCommand());
+    }
+
+    /**
+     * Build cron job command
+     *
+     * @return string
+     */
+    public function buildCommand()
+    {
+        return strtr('{php} {yii} {command}', [
             '{php}' => PHP_BINARY,
             '{yii}' => \Yii::getAlias('@root/yii'),
-            '{command}' => 'cron/job/run ' . $this->id,
+            '{command}' => $this->command,
         ]);
-
-        $process = new Process($command);
-        $process->start();
     }
 }
