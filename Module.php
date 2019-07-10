@@ -19,6 +19,14 @@ use yii\helpers\ArrayHelper;
 class Module extends \yii\base\Module
 {
     /**
+     * @var string
+     */
+    public $phpBinary = PHP_BINARY;
+    /**
+     * @var string
+     */
+    public $yiiFile = '@vendor/../yii';
+    /**
      * @var
      */
     public $bsVersion;
@@ -40,6 +48,8 @@ class Module extends \yii\base\Module
 
         $this->registerTranslations();
         $this->configureBsVersion();
+
+        $this->yiiFile = realpath(\Yii::getAlias($this->yiiFile));
     }
 
     /**

@@ -5,7 +5,9 @@
 
 namespace vasadibt\cron\models;
 
+use common\helpers\FileHelper;
 use Symfony\Component\Process\Process;
+use vasadibt\cron\Module;
 use Yii;
 use yii\db\ActiveQuery;
 use yii\db\ActiveQueryInterface;
@@ -111,8 +113,9 @@ class CronJob extends ActiveRecord
      */
     public function run()
     {
-        $process = $this->getProcess();
+        $process = $this->buildProcess($this->command, $this->max_execution_time ?? 60);
         $process->start();
+
         $start = microtime(true);
 
         $run = new CronJobRun();
@@ -140,20 +143,20 @@ class CronJob extends ActiveRecord
      */
     public function runQuick()
     {
-        $process = $this->getProcess();
+        $process = $this->buildProcess('cron/job/run ' . $this->id);
         $process->start();
     }
 
     /**
-     * Get process object
-     *
+     * @param string $command
+     * @param int $timeout
      * @return Process
      */
-    public function getProcess()
+    public function buildProcess($command, $timeout = 60)
     {
-        return !empty($this->max_execution_time)
-            ? new Process($this->buildCommand(), null, null, null, $this->max_execution_time)
-            : new Process($this->buildCommand());
+        $command = $this->buildCommand($command);
+        $process = new Process($command, null, null, null, $timeout);
+        return $process;
     }
 
     /**
@@ -161,12 +164,14 @@ class CronJob extends ActiveRecord
      *
      * @return string
      */
-    public function buildCommand()
+    public function buildCommand($command)
     {
+        $module = Module::getInstance();
+
         return strtr('{php} {yii} {command}', [
-            '{php}' => PHP_BINARY,
-            '{yii}' => \Yii::getAlias('@root/yii'),
-            '{command}' => $this->command,
+            '{php}' => $module->phpBinary,
+            '{yii}' => $module->yiiFile,
+            '{command}' => $command,
         ]);
     }
 }
