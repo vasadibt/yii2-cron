@@ -59,14 +59,34 @@ class CronJobRunSearch extends CronJobRun
             ['id' => $this->id],
             ['job_id' => $this->job_id],
             ['like', 'pid', $this->pid],
-            ['like', 'in_progress', $this->in_progress],
-            ['start' => $this->start],
-            ['finish' => $this->finish],
+            ['in_progress' => $this->in_progress],
             ['runtime' => $this->runtime],
             ['exit_code' => $this->exit_code],
             ['like', 'output', $this->output],
             ['like', 'error_output', $this->error_output],
         ]);
+
+        if ($this->start) {
+            if (strpos($this->start, ' ') === false) {
+                $query->andWhere(['AND',
+                    ['>=', 'start', $this->start . ' 00:00:00'],
+                    ['<=', 'start', $this->start . ' 23:59:59'],
+                ]);
+            } else {
+                $query->andWhere(['start', $this->start]);
+            }
+        }
+
+        if ($this->finish) {
+            if (strpos($this->finish, ' ') === false) {
+                $query->andWhere(['AND',
+                    ['>=', 'finish', $this->finish . ' 00:00:00'],
+                    ['<=', 'finish', $this->finish . ' 23:59:59'],
+                ]);
+            } else {
+                $query->andWhere(['finish', $this->finish]);
+            }
+        }
 
         return $dataProvider;
     }

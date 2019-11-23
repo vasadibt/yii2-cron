@@ -1,8 +1,10 @@
 <?php
 
 use kartik\grid\GridView;
+use vasadibt\cron\models\CronJob;
 use vasadibt\cron\models\CronJobRun;
 use vasadibt\cron\Module;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Console;
 use yii\helpers\Html;
 
@@ -27,6 +29,14 @@ $this->params['breadcrumbs'][] = $this->title;
                     'class' => '\kartik\grid\DataColumn',
                     'attribute' => 'job_id',
                     'vAlign' => 'middle',
+                    'value' => function (CronJobRun $model) {
+                        return $model->job->name;
+                    },
+                    'filter' => ArrayHelper::map(
+                        CronJob::find()->all(),
+                        'id',
+                        'name'
+                    )
                 ],
                 [
                     'class' => '\kartik\grid\DataColumn',
@@ -37,6 +47,10 @@ $this->params['breadcrumbs'][] = $this->title;
                     'class' => '\kartik\grid\DataColumn',
                     'attribute' => 'in_progress',
                     'vAlign' => 'middle',
+                    'filter' => [
+                        0 => Yii::t('app', 'No'),
+                        1 => Yii::t('app', 'Yes'),
+                    ]
                 ],
                 [
                     'class' => '\kartik\grid\DataColumn',
