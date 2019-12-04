@@ -41,7 +41,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 [
                     'class' => '\kartik\grid\DataColumn',
                     'attribute' => 'active',
-                    'format' => 'bool',
+                    'format' => 'boolean',
                 ],
                 [
                     'class' => '\kartik\grid\DataColumn',
@@ -64,7 +64,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         return $job->last->exit_code == 0 ? true : false;
                     },
                     'label' => Yii::t('vbt-cron', 'Success'),
-                    'format' => 'bool',
+                    'format' => 'boolean',
                 ],
                 [
                     'class' => 'kartik\grid\ActionColumn',
