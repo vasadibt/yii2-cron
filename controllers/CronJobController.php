@@ -55,6 +55,7 @@ class CronJobController extends Controller
         $model->loadDefaultValues();
 
         if ($model->load(Yii::$app->request->post())) {
+            $model->active = (bool)$model->active;
             $model->save();
             return $this->redirect(['update', 'id' => $model->id]);
         }
@@ -76,6 +77,7 @@ class CronJobController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post())) {
+            $model->active = (bool)$model->active;
             $model->save();
             return $this->refresh();
         }

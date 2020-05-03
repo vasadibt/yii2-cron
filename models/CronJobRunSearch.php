@@ -59,12 +59,15 @@ class CronJobRunSearch extends CronJobRun
             ['id' => $this->id],
             ['job_id' => $this->job_id],
             ['like', 'pid', $this->pid],
-            ['in_progress' => $this->in_progress],
             ['runtime' => $this->runtime],
             ['exit_code' => $this->exit_code],
             ['like', 'output', $this->output],
             ['like', 'error_output', $this->error_output],
         ]);
+
+        if (is_numeric($this->in_progress) || is_bool($this->in_progress)) {
+            $query->where(['in_progress' => (bool)$this->in_progress]);
+        }
 
         if ($this->start) {
             if (strpos($this->start, ' ') === false) {
