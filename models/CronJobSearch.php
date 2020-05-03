@@ -61,8 +61,11 @@ class CronJobSearch extends CronJob
             ['like', 'schedule', $this->schedule],
             ['like', 'command', $this->command],
             ['max_execution_time' => $this->max_execution_time],
-            ['like', 'active', $this->active],
         ]);
+
+        if (is_numeric($this->active) || is_bool($this->active)) {
+            $query->where(['active' => (bool)$this->active]);
+        }
 
         return $dataProvider;
     }

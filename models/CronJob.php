@@ -122,7 +122,7 @@ class CronJob extends ActiveRecord
         $run->job_id = $this->id;
         $run->start = date('Y-m-d H:i:s');
         $run->pid = (string)$process->getPid();
-        $run->in_progress = 1;
+        $run->in_progress = true;
         $run->save(false);
         $this->last_id = $run->id;
         $this->save();
@@ -132,7 +132,7 @@ class CronJob extends ActiveRecord
         $run->finish = date('Y-m-d H:i:s');
         $run->output = $process->getOutput();
         $run->error_output = $process->getErrorOutput();
-        $run->in_progress = 0;
+        $run->in_progress = false;
         $run->save(true);
 
         return $run;
