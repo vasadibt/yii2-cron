@@ -3,7 +3,7 @@
  * Created by Model Generator.
  */
 
-namespace vasadibt\cron\models;
+namespace fullmvc\cron\models;
 
 use Yii;
 use yii\db\ActiveQuery;
@@ -16,7 +16,7 @@ use yii\db\ActiveRecord;
  * @property integer $id
  * @property integer $job_id
  * @property string $pid
- * @property integer $in_progress
+ * @property boolean $in_progress
  * @property string $start
  * @property string $finish
  * @property double $runtime

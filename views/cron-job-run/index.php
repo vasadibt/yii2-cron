@@ -1,15 +1,15 @@
 <?php
 
 use kartik\grid\GridView;
-use vasadibt\cron\models\CronJob;
-use vasadibt\cron\models\CronJobRun;
-use vasadibt\cron\Module;
+use fullmvc\cron\models\CronJob;
+use fullmvc\cron\models\CronJobRun;
+use fullmvc\cron\Module;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Console;
 use yii\helpers\Html;
 
 /** @var yii\web\View $this */
-/** @var vasadibt\cron\models\CronJobRunSearch $searchModel */
+/** @var fullmvc\cron\models\CronJobRunSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
 $this->title = Yii::t('vbt-cron', 'Cron Job Runs');
@@ -46,6 +46,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 [
                     'class' => '\kartik\grid\DataColumn',
                     'attribute' => 'in_progress',
+                    'format' => 'boolean',
                     'vAlign' => 'middle',
                     'filter' => [
                         0 => Yii::t('app', 'No'),

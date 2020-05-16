@@ -6,10 +6,10 @@
  * Time: 18:12
  */
 
-namespace vasadibt\cron\commands;
+namespace fullmvc\cron\commands;
 
 use Cron\CronExpression;
-use vasadibt\cron\models\CronJob;
+use fullmvc\cron\models\CronJob;
 use yii\console\Controller;
 use yii\console\widgets\Table;
 use yii\helpers\ArrayHelper;
@@ -32,7 +32,7 @@ class CronController extends Controller
     public function actionJobs()
     {
         $jobs = CronJob::find()
-            ->where(['active' => 1])
+            ->where(['active' => true])
             ->all();
 
         echo PHP_EOL;
@@ -45,7 +45,7 @@ class CronController extends Controller
                     $job->schedule,
                     $job->command,
                     $job->max_execution_time,
-                    $job->active ? 1 : 0,
+                    $job->active ? true : false,
                 ];
             })
         ]);

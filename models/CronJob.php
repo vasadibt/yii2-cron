@@ -3,15 +3,16 @@
  * Created by Model Generator.
  */
 
-namespace vasadibt\cron\models;
+namespace fullmvc\cron\models;
 
 use common\helpers\FileHelper;
 use Symfony\Component\Process\Process;
-use vasadibt\cron\Module;
+use fullmvc\cron\Module;
 use Yii;
 use yii\db\ActiveQuery;
 use yii\db\ActiveQueryInterface;
 use yii\db\ActiveRecord;
+use yii\db\Expression;
 
 /**
  * This is the model class for table "cron_job".
@@ -22,7 +23,7 @@ use yii\db\ActiveRecord;
  * @property string $schedule
  * @property string $command
  * @property int $max_execution_time
- * @property int $active
+ * @property boolean $active
  *
  * @property CronJobRun[] $cronJobRuns
  * @property CronJobRun $last
@@ -104,7 +105,7 @@ class CronJob extends ActiveRecord
                     ['cron_job_run.in_progress' => 0],
                     ['AND',
                         ['>', 'cron_job.max_execution_time', 0],
-                        ['<', 'cron_job_run.start', new \yii\db\Expression('DATE_ADD(NOW(), INTERVAL -2 * cron_job.max_execution_time SECOND)')]
+                        ['<', 'cron_job_run.start', new Expression('DATE_ADD(NOW(), INTERVAL -2 * cron_job.max_execution_time SECOND)')]
                     ]
                 ],
             ])

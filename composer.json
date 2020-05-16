@@ -1,5 +1,5 @@
 {
-  "name": "vasadibt/yii2-cron",
+  "name": "fullmvc/yii2-cron",
   "description": "Create Cron jobs from browser, and look that run logs",
   "type": "yii2-extension",
   "keywords": [
@@ -12,8 +12,8 @@
   "license": "MIT",
   "authors": [
     {
-      "name": "vasadibt",
-      "email": "vasadibt@gmail.com"
+      "name": "fullmvc",
+      "email": "gal.sandor88@gmail.com"
     }
   ],
   "require": {
@@ -24,7 +24,7 @@
   },
   "autoload": {
     "psr-4": {
-      "vasadibt\\cron\\": ""
+      "fullmvc\\cron\\": ""
     }
   }
 }

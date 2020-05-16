@@ -1,10 +1,10 @@
 <?php
 
-use vasadibt\cron\Module;
+use fullmvc\cron\Module;
 use yii\helpers\Html;
 
 /**@var $this yii\web\View */
-/**@var $model vasadibt\cron\models\CronJob */
+/**@var $model fullmvc\cron\models\CronJob */
 
 $this->title = Yii::t('vbt-cron', 'Update Cron Job: {nameAttribute}', [
     'nameAttribute' => $model->name,

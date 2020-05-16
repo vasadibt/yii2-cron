@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /**@var $this yii\web\View */
-/**@var $model vasadibt\cron\models\CronJob */
+/**@var $model fullmvc\cron\models\CronJob */
 /**@var $form yii\widgets\ActiveForm */
 ?>
 

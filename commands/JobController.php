@@ -1,15 +1,15 @@
 <?php
 
 
-namespace vasadibt\cron\commands;
+namespace fullmvc\cron\commands;
 
-use vasadibt\cron\models\CronJob;
+use fullmvc\cron\models\CronJob;
 use yii\console\Controller;
 use yii\helpers\Console;
 
 /**
  * Class JobController
- * @package vasadibt\cron\commands
+ * @package fullmvc\cron\commands
  */
 class JobController extends Controller
 {
