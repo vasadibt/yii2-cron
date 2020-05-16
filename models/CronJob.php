@@ -43,7 +43,8 @@ class CronJob extends ActiveRecord
     public function rules()
     {
         return [
-            [['last_id', 'max_execution_time', 'active'], 'integer'],
+            [['last_id', 'max_execution_time'], 'integer'],
+            [['active'], 'boolean'],
             [['name', 'schedule', 'command'], 'string', 'max' => 255],
         ];
     }
