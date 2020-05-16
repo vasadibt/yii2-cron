@@ -102,6 +102,10 @@ class CronJob extends ActiveRecord
                 ['OR',
                     ['cron_job_run.id' => null],
                     ['cron_job_run.in_progress' => 0],
+                    ['AND',
+                        ['>', 'cron_job.max_execution_time', 0],
+                        ['<', 'cron_job_run.start', new \yii\db\Expression('DATE_ADD(NOW(), INTERVAL -2 * cron_job.max_execution_time SECOND)')]
+                    ]
                 ],
             ])
             ->all();
