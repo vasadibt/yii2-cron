@@ -43,7 +43,8 @@ class CronJobRun extends ActiveRecord
     {
         return [
             [['job_id', 'pid', 'in_progress', 'start'], 'required'],
-            [['job_id', 'in_progress', 'exit_code'], 'integer'],
+            [['job_id', 'exit_code'], 'integer'],
+            [['in_progress'], 'boolean'],
             [['start', 'finish'], 'safe'],
             [['runtime'], 'number'],
             [['output', 'error_output'], 'string'],
