@@ -6,7 +6,7 @@
  * Time: 19:01
  */
 
-namespace fullmvc\cron;
+namespace vasadibt\cron;
 
 use Yii;
 use yii\console\Application as ConsoleApplication;
@@ -14,7 +14,7 @@ use yii\helpers\ArrayHelper;
 
 /**
  * Class Module
- * @package fullmvc\cron
+ * @package vasadibt\cron
  */
 class Module extends \yii\base\Module
 {
@@ -43,7 +43,7 @@ class Module extends \yii\base\Module
         parent::init();
 
         if (Yii::$app instanceof ConsoleApplication) {
-            $this->controllerNamespace = 'fullmvc\cron\commands';
+            $this->controllerNamespace = 'vasadibt\cron\commands';
         }
 
         $this->registerTranslations();

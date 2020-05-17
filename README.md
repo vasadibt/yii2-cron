@@ -10,13 +10,13 @@ The preferred way to install this extension is through [composer](http://getcomp
 Either run
 
 ```
-php composer.phar require --prefer-dist fullmvc/yii2-cron "*"
+php composer.phar require --prefer-dist vasadibt/yii2-cron "*"
 ```
 
 or add
 
 ```
-"fullmvc/yii2-cron": "*"
+"vasadibt/yii2-cron": "*"
 ```
 
 to the require section of your `composer.json` file.
@@ -58,7 +58,7 @@ Simple example:
 ```php
 'modules' => [
     'cron' => [
-        'class' => 'fullmvc\cron\Module',
+        'class' => 'vasadibt\cron\Module',
     ],
 ],
 ```
@@ -72,7 +72,7 @@ Simple example:
 ```php
 'modules' => [
     'cron' => [
-        'class' => 'fullmvc\cron\Module',
+        'class' => 'vasadibt\cron\Module',
     ],
 ],
 ```

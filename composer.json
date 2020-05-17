@@ -1,5 +1,5 @@
 {
-  "name": "fullmvc/yii2-cron",
+  "name": "vasadibt/yii2-cron",
   "description": "Create Cron jobs from browser, and look that run logs",
   "type": "yii2-extension",
   "keywords": [

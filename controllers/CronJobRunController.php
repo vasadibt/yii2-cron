@@ -1,9 +1,9 @@
 <?php
 
-namespace fullmvc\cron\controllers;
+namespace vasadibt\cron\controllers;
 
 use Yii;
-use fullmvc\cron\models\CronJobRunSearch;
+use vasadibt\cron\models\CronJobRunSearch;
 use yii\web\Controller;
 
 /**

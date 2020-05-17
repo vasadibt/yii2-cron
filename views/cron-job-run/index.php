@@ -1,15 +1,15 @@
 <?php
 
 use kartik\grid\GridView;
-use fullmvc\cron\models\CronJob;
-use fullmvc\cron\models\CronJobRun;
-use fullmvc\cron\Module;
+use vasadibt\cron\models\CronJob;
+use vasadibt\cron\models\CronJobRun;
+use vasadibt\cron\Module;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Console;
 use yii\helpers\Html;
 
 /** @var yii\web\View $this */
-/** @var fullmvc\cron\models\CronJobRunSearch $searchModel */
+/** @var vasadibt\cron\models\CronJobRunSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
 $this->title = Yii::t('vbt-cron', 'Cron Job Runs');

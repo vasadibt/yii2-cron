@@ -1,11 +1,11 @@
 <?php
 
-use fullmvc\cron\Module;
+use vasadibt\cron\Module;
 use yii\helpers\Html;
 
 
 /**@var $this yii\web\View */
-/**@var $model fullmvc\cron\models\CronJob */
+/**@var $model vasadibt\cron\models\CronJob */
 
 $this->title = Yii::t('vbt-cron', 'Create Cron Job');
 $this->params['breadcrumbs'][] = ['label' => Yii::t('vbt-cron', 'Cron Jobs'), 'url' => ['index']];
