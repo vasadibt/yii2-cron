@@ -60,7 +60,7 @@ class Module extends \yii\base\Module
         \Yii::$app->i18n->translations['vbt-cron'] = [
             'class' => '\yii\i18n\PhpMessageSource',
             'sourceLanguage' => 'en-US',
-            'basePath' => '@fullmvc/cron/messages',
+            'basePath' => '@vasadibt/cron/messages',
         ];
     }
 
