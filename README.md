@@ -27,7 +27,7 @@ to the require section of your `composer.json` file.
 Run the following command in Terminal for database migration:
 
 ```
-yii migrate/up --migrationPath=@fullmvc/cron/migrations
+yii migrate/up --migrationPath=@vasadibt/cron/migrations
 ```
 
 Or use the [namespaced migration](http://www.yiiframework.com/doc-2.0/guide-db-migrations.html#namespaced-migrations) (requires at least Yii 2.0.10):
@@ -38,7 +38,7 @@ Or use the [namespaced migration](http://www.yiiframework.com/doc-2.0/guide-db-m
     'migrate' => [
         'class' => 'yii\console\controllers\MigrateController',
         'migrationPath' => [
-            '@fullmvc/cron/migrations',
+            '@vasadibt/cron/migrations',
         ],
     ],
 ],
