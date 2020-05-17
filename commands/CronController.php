@@ -32,7 +32,7 @@ class CronController extends Controller
     public function actionJobs()
     {
         $jobs = CronJob::find()
-            ->where(['active' => 1])
+            ->where(['active' => true])
             ->all();
 
         echo PHP_EOL;
@@ -45,7 +45,7 @@ class CronController extends Controller
                     $job->schedule,
                     $job->command,
                     $job->max_execution_time,
-                    $job->active ? 1 : 0,
+                    $job->active ? true : false,
                 ];
             })
         ]);

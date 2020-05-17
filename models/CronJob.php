@@ -12,6 +12,7 @@ use Yii;
 use yii\db\ActiveQuery;
 use yii\db\ActiveQueryInterface;
 use yii\db\ActiveRecord;
+use yii\db\Expression;
 
 /**
  * This is the model class for table "cron_job".
@@ -22,7 +23,7 @@ use yii\db\ActiveRecord;
  * @property string $schedule
  * @property string $command
  * @property int $max_execution_time
- * @property int $active
+ * @property boolean $active
  *
  * @property CronJobRun[] $cronJobRuns
  * @property CronJobRun $last
@@ -43,7 +44,8 @@ class CronJob extends ActiveRecord
     public function rules()
     {
         return [
-            [['last_id', 'max_execution_time', 'active'], 'integer'],
+            [['last_id', 'max_execution_time'], 'integer'],
+            [['active'], 'boolean'],
             [['name', 'schedule', 'command'], 'string', 'max' => 255],
         ];
     }

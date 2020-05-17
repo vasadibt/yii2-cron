@@ -46,6 +46,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 [
                     'class' => '\kartik\grid\DataColumn',
                     'attribute' => 'in_progress',
+                    'format' => 'boolean',
                     'vAlign' => 'middle',
                     'filter' => [
                         0 => Yii::t('app', 'No'),
