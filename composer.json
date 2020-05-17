@@ -12,8 +12,8 @@
   "license": "MIT",
   "authors": [
     {
-      "name": "fullmvc",
-      "email": "gal.sandor88@gmail.com"
+      "name": "vasadibt",
+      "email": "vasadibt@gmail.com"
     }
   ],
   "require": {
@@ -24,7 +24,7 @@
   },
   "autoload": {
     "psr-4": {
-      "fullmvc\\cron\\": ""
+      "vasadibt\\cron\\": ""
     }
   }
 }
