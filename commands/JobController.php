@@ -20,21 +20,15 @@ class JobController extends Controller
     {
         $job = CronJob::findOne($id);
         $run = $job->run();
-
-        try {
-            // try to write an empty string to the STDOUT
-            // because on long job run, the "connection" to
-            // the php://stdout may lost
-            fwrite(\STDOUT, '');
-            $writer = function ($message) {
+        $writer = function ($message) {
+            try {
                 return Console::output($message);
-            };
-        } catch (\Exception $e) {
-            $writer = function ($message) {
-                echo $message . PHP_EOL;
+            } catch (\Exception $e) {
+                $message = $message . PHP_EOL;
+                echo $message;
                 return strlen($message);
-            };
-        }
+            }
+        };
 
         $writer('Process is finished, exit code: #' . $run->exit_code);
         $writer($run->output);
