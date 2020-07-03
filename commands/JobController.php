@@ -42,7 +42,8 @@ class JobController extends Controller
     /**
      * @param string $message
      */
-    protected function output($message){
+    protected function output($message)
+    {
         echo $message . PHP_EOL;
     }
 }
