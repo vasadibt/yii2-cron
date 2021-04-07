@@ -103,6 +103,12 @@ class CronJob extends ActiveRecord
                 ['OR',
                     ['cron_job_run.id' => null],
                     ['cron_job_run.in_progress' => 0],
+                    ['AND',
+                        ['IS NOT', 'cron_job.max_execution_time', null],
+                        ['>', 'cron_job.max_execution_time', 0],
+                        ['cron_job_run.in_progress' => 1],
+                        new Expression('DATE_ADD(`cron_job_run`.`start`, INTERVAL `cron_job`.`max_execution_time` second) < "' . date('Y-m-d H:i:s') . '"'),
+                    ],
                 ],
             ])
             ->all();
