@@ -14,28 +14,37 @@ use yii\helpers\Console;
 class JobController extends Controller
 {
     /**
-     * @param $id
+     * @param int $id
      */
     public function actionRun($id)
     {
         $job = CronJob::findOne($id);
         $run = $job->run();
 
-        Console::output('Process is finished, exit code: #' . $run->exit_code);
-        Console::output($run->output);
-        if (!empty($run->error_output)) {
-            Console::output($run->error_output);
+        $this->output('Process is finished, exit code: #' . $run->exit_code);
+        $this->output($run->output);
+
+        if ($run->error_output) {
+            $this->output($run->error_output);
         }
     }
 
     /**
-     * @param $id
+     * @param int $id
      */
     public function actionRunQuick($id)
     {
         $job = CronJob::findOne($id);
         $job->runQuick();
-        Console::output('Job started without wait finish: ' . $job->name);
+        $this->output('Job started without wait finish: ' . $job->name);
+    }
+
+    /**
+     * @param string $message
+     */
+    protected function output($message)
+    {
+        echo $message . PHP_EOL;
     }
 }
 

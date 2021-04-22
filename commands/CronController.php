@@ -56,8 +56,10 @@ class CronController extends Controller
      */
     public function actionRun()
     {
+        $now = date(\DateTimeInterface::W3C);
+
         foreach (CronJob::findRunnable() as $job) {
-            if (CronExpression::factory($job->schedule)->isDue()) {
+            if (CronExpression::factory($job->schedule)->isDue($now)) {
                 $this->run('/cron/job/run-quick', [$job->id]);
             }
         }
